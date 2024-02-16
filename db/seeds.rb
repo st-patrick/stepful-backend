@@ -7,3 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+
+Student.create(name: "Darth Maul")
+Coach.create(name: "Darth Sidious")
+Slot.create(start_time: "2013-02-02 01:00:00 UTC", coach_id: 1)
