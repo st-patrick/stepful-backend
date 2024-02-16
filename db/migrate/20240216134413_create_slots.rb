@@ -3,8 +3,8 @@ class CreateSlots < ActiveRecord::Migration[7.1]
     create_table :slots do |t|
       t.timestamp :start_time
       t.belongs_to :coach, null: false, foreign_key: true
-      t.references :student, null: false, foreign_key: true
-      t.references :review, null: false, foreign_key: true
+      t.references :student, foreign_key: true
+      t.references :review, foreign_key: true
 
       t.timestamps
     end
