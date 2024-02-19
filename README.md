@@ -42,7 +42,7 @@ Some basic info to get the API backend up and running quickly
 
 ... which you can think of as an extension of pseudo code, meaning writing down what I want the software to do in some type of human-readable pseudo-code style. Advantage being that it can always remain a source of truth, no matter what updates are applied, which versions of what and what programming language or framework are in use. Here's what that looks like when getting started:
 
-
+```
 saveDate()
 setSlotAvailableAt(Time)
 pickDate()
@@ -54,23 +54,27 @@ bookSlot(slot id) or (coach id, time)
 renderMySlots()
 reviewSlot(score, notes)
 renderPastReviews()
+```
 
 now I didn't end up using any of these method names but it helps me get a first "shape" what the code does.
 Here's the same thing but with API endpoints
 
-GET	    /coaches		          all coaches sorted by id		
-PATCH   /slots/:id 		        book slot identified by slot id	
-POST	  /slots/:id/review	    create a review consisting of score and notes
-GET 	  /slots all 		        slots sorted by time					
-GET     /coach/:id/slots 	    all slots made available by this coach
-GET	    /coach/:id/slots/past	all previous slots and reviews
-POST	  /slot			            create a new slot					
-GET	    /student/:id/slots	  all slots booked by this student
+```
+GET	/coaches		all coaches sorted by id		
+PATCH   /slots/:id 		book slot identified by slot id	
+POST	/slots/:id/review	create a review consisting of score and notes
+GET 	/slots all 		slots sorted by time					
+GET     /coach/:id/slots 	all slots made available by this coach
+GET	/coach/:id/slots/past	all previous slots and reviews
+POST	/slot			create a new slot					
+GET	/student/:id/slots	all slots booked by this student
+```
 
 again, some endpoints are now named differently but it's my way of getting a first grasp on the specifics.
 
 And finally, a basic pseudo code style overview of the data models:
 
+```
 Slot
 	belongs to Coach coach
 	has one Time start_time
@@ -90,6 +94,7 @@ Coach
 Student
 	has one String name
 	has many Slots
+```
 
 
 
