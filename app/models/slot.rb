@@ -1,6 +1,5 @@
 class Slot < ApplicationRecord
   belongs_to :coach
-
-  has_one :student
+  belongs_to :student, optional: true
   has_one :review
 end

@@ -13,6 +13,14 @@ class SlotsController < ApplicationController
     render json: @slot
   end
 
+  # GET /slots/available
+  def available
+    render json: Slot.where(start_time: (Time.now)..)
+                      .where(student_id: nil)
+                      .left_outer_joins(:coach)
+                      .to_json(include: :coach)  
+  end
+
   # POST /slots
   def create
     @slot = Slot.new(slot_params)

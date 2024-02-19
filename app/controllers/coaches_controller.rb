@@ -13,6 +13,21 @@ class CoachesController < ApplicationController
     render json: @coach
   end
 
+  def showslots
+    render json: Slot.where(coach_id: params[:id])
+                    .where(start_time: (Time.now)..) 
+                    .left_outer_joins(:student)
+                    .order(:start_time)
+                    .to_json(include: :student)
+  end
+
+  def showreviewed
+    render json: Review.joins(:slot => :student)
+                    .where(slot: {coach_id: params[:id]})
+                    .where(slot: {start_time: ..(Time.now)})
+                    .to_json(include: {slot: {include: :student}})                          
+  end  
+
   # POST /coaches
   def create
     @coach = Coach.new(coach_params)

@@ -13,6 +13,15 @@ class StudentsController < ApplicationController
     render json: @student
   end
 
+  # GET /students/1/booked
+  def showbooked
+    render json: Slot.where(student_id: params[:id])
+                    .where(start_time: (Time.now)..) 
+                    .left_outer_joins(:coach)
+                    .order(:start_time)
+                    .to_json(include: :coach)
+  end
+
   # POST /students
   def create
     @student = Student.new(student_params)

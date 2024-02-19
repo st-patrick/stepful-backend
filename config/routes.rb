@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get "coach/:id/slots" => "coaches#showslots"
+  get "coach/:id/reviewed" => "coaches#showreviewed"
+  get "slots/available" => "slots#available"
+  get "student/:id/booked" => "students#showbooked"
+
   resources :slots
   resources :reviews
   resources :coaches
